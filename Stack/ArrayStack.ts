@@ -20,12 +20,12 @@ class ArrayStack<T> implements IStack<T> {
   }
 
   // 判断是否为空
-  isEmpty(): boolean {
+  get isEmpty(): boolean {
     return this.data.length === 0
   }
 
   // 返回栈的数据个数
-  size(): number {
+  get size(): number {
     return this.data.length
   }
 }

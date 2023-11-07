@@ -1,5 +1,5 @@
 import ArrayStack from '../ArrayStack'
-
+// 有效得括号
 function isValid(s: string): boolean {
   const stack = new ArrayStack<string>()
 

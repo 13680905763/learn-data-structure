@@ -1,5 +1,6 @@
 import IStack from './IStack'
 
+// 链表实现栈
 class LinkedStack<T> implements IStack<T> {
   push(element: T): void {
     throw new Error('Method not implemented.')
@@ -10,10 +11,10 @@ class LinkedStack<T> implements IStack<T> {
   peek(): T | undefined {
     throw new Error('Method not implemented.')
   }
-  isEmpty(): boolean {
+  get isEmpty(): boolean {
     throw new Error('Method not implemented.')
   }
-  size(): number {
+  get size(): number {
     throw new Error('Method not implemented.')
   }
 }

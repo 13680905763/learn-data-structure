@@ -1,3 +1,5 @@
+import ILinkedList from './ILinkedList'
+
 class Node<T> {
   value: T
   next: Node<T> | null = null
@@ -5,14 +7,13 @@ class Node<T> {
     this.value = value
   }
 }
-class LinkedList<T> {
+class LinkedList<T> implements ILinkedList<T> {
   private head: Node<T> | null = null
-  private size: number = 0
+  private length: number = 0
 
-  get length(): number {
-    return this.size
+  get size() {
+    return this.length
   }
-
   private getNode(position: number): Node<T> | null {
     let index = 0
     let current = this.head
@@ -21,7 +22,9 @@ class LinkedList<T> {
     }
     return current
   }
-
+  peek(): T | undefined {
+    return this.head?.value
+  }
   // 追加节点
   append(value: T) {
     const newNode = new Node(value)
@@ -38,9 +41,8 @@ class LinkedList<T> {
       current.next = newNode
     }
 
-    this.size++
+    this.length++
   }
-
   // 遍历
   traverse() {
     const values: T[] = []
@@ -54,7 +56,7 @@ class LinkedList<T> {
   // 插入
   insert(value: T, position: number) {
     // 越界判断
-    if (position < 0 || position > this.size) return false
+    if (position < 0 || position > this.length) return false
 
     const newNode = new Node(value)
     // 判断是否插入头部
@@ -66,13 +68,13 @@ class LinkedList<T> {
       newNode.next = previous!.next
       previous!.next = newNode
     }
-    this.size++
+    this.length++
+    return true
   }
-
   // 根据位置删除
   removeAt(position: number): T | null {
     // 越界判断
-    if (position < 0 || position >= this.size) return null
+    if (position < 0 || position >= this.length) return null
 
     let current = this.head
     if (position === 0) {
@@ -80,11 +82,10 @@ class LinkedList<T> {
     } else {
       const previous = this.getNode(position - 1)
       previous!.next = previous?.next?.next ?? null
-      this.size--
+      this.length--
     }
     return current?.value ?? null
   }
-
   // 删除值
   remove(value: T): T | null {
     const index = this.indexOf(value)
@@ -93,13 +94,13 @@ class LinkedList<T> {
 
   // 获取
   get(position: number): T | null {
-    if (position < 0 || position >= this.size) return null
+    if (position < 0 || position >= this.length) return null
 
     return this.getNode(position)?.value ?? null
   }
   // 更新
   update(value: T, position: number): boolean {
-    if (position < 0 && position >= this.size) return false
+    if (position < 0 && position >= this.length) return false
     const current = this.getNode(position)
     current!.value = value
     return true
@@ -119,7 +120,7 @@ class LinkedList<T> {
   }
 
   get isEmpty(): boolean {
-    return this.size === 0
+    return this.length === 0
   }
 }
 
