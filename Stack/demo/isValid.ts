@@ -17,7 +17,7 @@ function isValid(s: string): boolean {
     }
   }
 
-  return stack.isEmpty()
+  return stack.isEmpty
 }
 
 export default isValid

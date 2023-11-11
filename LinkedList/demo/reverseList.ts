@@ -43,6 +43,7 @@ function reverseList2(head: ListNode | null): ListNode | null {
   return newHead
 }
 
+
 // 递归
 function reverseList3(head: ListNode | null): ListNode | null {
   if (head === null || head.next === null) return head

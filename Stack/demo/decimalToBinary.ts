@@ -14,7 +14,7 @@ function decimalToBinary(decimal: number): string {
   }
 
   let binary = ''
-  while (!stack.isEmpty()) {
+  while (!stack.isEmpty) {
     binary += stack.pop()
   }
   console.log(binary)

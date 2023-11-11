@@ -7,7 +7,7 @@ function lastRemaining(n: number, m: number) {
     queue.enqueue(i)
   }
 
-  while (queue.size() > 1) {
+  while (queue.size > 1) {
     for (let i = 1; i < m; i++) {
       queue.enqueue(queue.dequeue()!)
     }
